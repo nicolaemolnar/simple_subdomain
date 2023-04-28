@@ -29,11 +29,11 @@ def get_subdomains_crt(domain):
         sys.exit(1)
 
 if __name__ == '__main__':
-    args = parse_args()
-    
-    if args.v:
+    if '-v' in sys.argv:
         print(VERSION)
         exit(0)
+        
+    args = parse_args()
     
     try:
         subdomains = get_subdomains_crt(args.domain)
