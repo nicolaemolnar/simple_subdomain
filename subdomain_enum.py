@@ -12,6 +12,7 @@ def parse_args():
     """
     parser = argparse.ArgumentParser(description="Subdomain Enumerator")
     parser.add_argument("-d", "--domain", help="Domain to enumerate subdomains for", required=True)
+    parser.add_argument("-o", "--output", help="Output of the results", required=True)
     parser.add_argument("-v", "--version", help="Retrieve the version of the actual script", action="store_true", required=False)
     return parser.parse_args()
 
@@ -42,7 +43,7 @@ if __name__ == '__main__':
             for subdomain in subdomains:
                 print(subdomain)
             
-            with open('subdomains.txt','w') as f:
+            with open(args.output,'w') as f:
                 for subdomain in subdomains:
                     f.write(subdomain+'\n')
                 f.close()
