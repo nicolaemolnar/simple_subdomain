@@ -24,6 +24,7 @@ def get_subdomains_crt(domain):
     except Exception as e:
         print("Unexpected error while obtaining subdomains for {}: {}".format(domain, e))
         sys.exit(1)
+    return []
 
 if __name__ == '__main__':
     args = parse_args()
@@ -33,10 +34,16 @@ if __name__ == '__main__':
         if subdomains:
             for subdomain in subdomains:
                 print(subdomain)
+            
+            with open('subdomains.txt','w') as f:
+                for subdomain in subdomains:
+                    f.write(subdomain+'\n')
+                f.close()
         else:
             print("No subdomains found for {}".format(args.domain))
         
         print("Script finshed successfully. Found {} subdomains".format(len(subdomains)))
+    
     except Exception as e:
         print("Unexpected error: {}".format(e))
         sys.exit(1)
