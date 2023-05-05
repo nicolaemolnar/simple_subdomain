@@ -2,6 +2,8 @@
 import sys
 import requests
 
+import time
+
 import argparse
 
 VERSION = 0.1
@@ -55,3 +57,5 @@ if __name__ == '__main__':
     except Exception as e:
         print("Unexpected error: {}".format(e))
         sys.exit(1)
+
+    time.sleep(10)
